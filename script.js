@@ -290,8 +290,10 @@ function setLanguage(lang) {
 
     if (lang === 'urdu') {
         document.body.setAttribute('dir', 'rtl');
+        document.body.classList.add('urdu-active');
     } else {
         document.body.removeAttribute('dir');
+        document.body.classList.remove('urdu-active');
     }
 
     targets.forEach(el => {

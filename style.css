@@ -30,10 +30,6 @@
     --nav-bg: rgba(15, 23, 42, 0.9);
 }
 
-[dir="rtl"] {
-    font-family: 'Noto Nastaliq Urdu', 'Inter', serif;
-    text-align: right;
-}
 
 
 
@@ -2367,96 +2363,68 @@ tr:hover td {
 }
 
 /* ============================================
-   MINIMAL SAFE RTL FIXES
+   MOBILE RTL UI FIX (URDU MODE)
    ============================================ */
-[dir="rtl"] .search-icon {
-    left: auto;
-    right: 14px;
-}
-[dir="rtl"] .search-input {
-    padding: 10px 40px 10px 16px;
-}
-[dir="rtl"] .card li {
-    padding-left: 0;
-    padding-right: 20px;
-}
-[dir="rtl"] .card li::before {
-    left: auto;
-    right: 0;
-}
-[dir="rtl"] .example-box {
-    border-left: 1px solid var(--border);
-    border-right: 4px solid var(--secondary);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-}
-[dir="rtl"] .example-box .en {
-    padding-right: 0;
-    padding-left: 80px;
-}
-[dir="rtl"] .example-actions {
-    right: auto;
-    left: 10px;
-}
-[dir="rtl"] .tip-box::before {
-    left: auto;
-    right: 24px;
-}
-[dir="rtl"] .back-to-top {
-    right: auto;
-    left: 30px;
-}
-[dir="rtl"] .toast-container {
-    right: auto;
-    left: 20px;
-}
-[dir="rtl"] .toast {
-    border-left: 1px solid var(--border);
-    border-right: 4px solid var(--primary);
-}
-[dir="rtl"] .update-toast {
-    right: auto;
-    left: 20px;
-    border-left: 1px solid var(--border);
-    border-right: 4px solid var(--accent);
-}
-[dir="rtl"] .close-modal {
-    right: auto;
-    left: 15px;
+
+/* 1. Navbar aur Bottom Nav ko HAMESHA LTR aur English font rakhein */
+.top-bar, 
+.bottom-nav, 
+.desktop-nav, 
+.nav-container, 
+.controls,
+.stats-bar {
+    direction: ltr !important;
+    font-family: 'Inter', sans-serif !important; 
+    text-align: left !important;
 }
 
-/* Mobile Specific RTL Stability */
+/* 2. Grids aur Cards ka alignment mat ultein */
+.grid, 
+.grid-2, 
+.tense-group-header {
+    direction: ltr !important;
+}
+
+/* 3. Sirf Content/Text wali jagah RTL aur Urdu font lagayen */
+[dir="rtl"] .section-header h2,
+[dir="rtl"] .section-header p,
+[dir="rtl"] .accordion-header,
+[dir="rtl"] .accordion-content p,
+[dir="rtl"] .card p,
+[dir="rtl"] .card h3,
+[dir="rtl"] .card .subtitle,
+[dir="rtl"] table td,
+[dir="rtl"] table th,
+[dir="rtl"] .example-box .ur,
+[dir="rtl"] .notes-area,
+[dir="rtl"] header p,
+[dir="rtl"] header h1 {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Noto Nastaliq Urdu', serif !important;
+    line-height: 2; /* Urdu text ke liye line height barhana zaroori hai */
+}
+
+/* 4. English definitions aur Formulas ko RTL se bachayen */
+[dir="rtl"] .en-def,
+[dir="rtl"] .example-box .en,
+[dir="rtl"] .formula,
+[dir="rtl"] .badge {
+    direction: ltr;
+    text-align: left;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* 5. Mobile par Urdu font size adjust karna (Nastaliq thora bada hota hai) */
 @media (max-width: 768px) {
-    [dir="rtl"] .top-bar {
-        left: 0;
-        right: 0;
-        width: 100% !important;
-        padding: 0 12px;
+    [dir="rtl"] .section-header h2,
+    [dir="rtl"] .accordion-header {
+        font-size: 1.1rem !important;
     }
-    [dir="rtl"] .bottom-nav {
-        left: 0;
-        right: 0;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: row !important;
-    }
-    [dir="rtl"] .bottom-nav-item {
-        flex: 1;
-        min-width: 0;
-    }
-    [dir="rtl"] .search-container {
-        flex: 1;
-        min-width: 0;
-        margin: 0 8px;
-    }
-    [dir="rtl"] .controls {
-        flex-shrink: 0;
-        display: flex !important;
-    }
-    [dir="rtl"] .logo {
-        flex-shrink: 0;
-        margin-left: 8px;
-        margin-right: 0;
+    [dir="rtl"] .card p {
+        font-size: 0.9rem !important;
     }
 }
+
 
 
