@@ -290,18 +290,46 @@ function setLanguage(lang) {
 
     if (lang === 'urdu') {
         document.body.setAttribute('dir', 'rtl');
-        targets.forEach(el => {
-            if (!el.getAttribute('data-roman')) {
-                el.setAttribute('data-roman', el.innerText);
-            }
-            el.innerText = el.getAttribute('data-urdu');
-        });
     } else {
         document.body.removeAttribute('dir');
-        targets.forEach(el => {
+    }
+
+    targets.forEach(el => {
+        // Store original Roman text if not already stored
+        if (!el.hasAttribute('data-roman')) {
+            const textNode = findFirstTextNode(el);
+            if (textNode) {
+                el.setAttribute('data-roman', textNode.textContent);
+            } else {
+                el.setAttribute('data-roman', el.innerText); // fallback
+            }
+        }
+
+        // Apply Urdu or Roman text
+        if (lang === 'urdu') {
+            setTextContentPreservingChildren(el, el.getAttribute('data-urdu'));
+        } else {
             const roman = el.getAttribute('data-roman');
-            if (roman) el.innerText = roman;
-        });
+            if (roman) setTextContentPreservingChildren(el, roman);
+        }
+    });
+}
+
+function findFirstTextNode(el) {
+    for (let node of el.childNodes) {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+            return node;
+        }
+    }
+    return null;
+}
+
+function setTextContentPreservingChildren(el, text) {
+    const textNode = findFirstTextNode(el);
+    if (textNode) {
+        textNode.textContent = text;
+    } else {
+        el.insertBefore(document.createTextNode(text), el.firstChild);
     }
 }
 
