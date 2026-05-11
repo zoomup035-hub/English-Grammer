@@ -2363,66 +2363,84 @@ tr:hover td {
 }
 
 /* ============================================
-   MOBILE RTL UI FIX (URDU MODE)
+   BULLETPROOF RTL UI FIX (URDU MODE)
    ============================================ */
 
-/* 1. Navbar aur Bottom Nav ko HAMESHA LTR aur English font rakhein */
-.top-bar, 
-.bottom-nav, 
-.desktop-nav, 
-.nav-container, 
-.controls,
-.stats-bar {
+/* 1. Body ko RTL se rokna - sab se zaroori step */
+body.urdu-active {
+    direction: ltr !important; /* Body hamesha LTR rahegi, content nahi shift hoga */
+    overflow-x: hidden !important; /* Koi bhi cheez screen se bahir na jaye */
+}
+
+/* 2. Sirf Content wale wrappers (header, container, footer) ko RTL karna */
+.urdu-active .container,
+.urdu-active header,
+.urdu-active footer {
+    direction: rtl;
+    text-align: right;
+}
+
+/* 3. Navbar aur Bottom Nav HAMESHA LTR aur English font */
+.urdu-active .top-bar, 
+.urdu-active .bottom-nav, 
+.urdu-active nav,
+.urdu-active .controls,
+.urdu-active .stats-bar {
     direction: ltr !important;
     font-family: 'Inter', sans-serif !important; 
     text-align: left !important;
 }
 
-/* 2. Grids aur Cards ka alignment mat ultein */
-.grid, 
-.grid-2, 
-.tense-group-header {
+/* 4. Grids ko LTR rakhein taaki cards ulte n hon */
+.urdu-active .grid, 
+.urdu-active .grid-2, 
+.urdu-active .tense-group-header {
     direction: ltr !important;
 }
 
-/* 3. Sirf Content/Text wali jagah RTL aur Urdu font lagayen */
-[dir="rtl"] .section-header h2,
-[dir="rtl"] .section-header p,
-[dir="rtl"] .accordion-header,
-[dir="rtl"] .accordion-content p,
-[dir="rtl"] .card p,
-[dir="rtl"] .card h3,
-[dir="rtl"] .card .subtitle,
-[dir="rtl"] table td,
-[dir="rtl"] table th,
-[dir="rtl"] .example-box .ur,
-[dir="rtl"] .notes-area,
-[dir="rtl"] header p,
-[dir="rtl"] header h1 {
+/* 5. Asal Urdu Text ko Nastaliq font aur RTL dena */
+.urdu-active .section-header h2,
+.urdu-active .section-header p,
+.urdu-active .accordion-header,
+.urdu-active .accordion-content p,
+.urdu-active .card p,
+.urdu-active .card h3,
+.urdu-active .card .subtitle,
+.urdu-active table td,
+.urdu-active table th,
+.urdu-active .example-box .ur,
+.urdu-active .notes-area,
+.urdu-active header p,
+.urdu-active header h1 {
     direction: rtl;
     text-align: right;
     font-family: 'Noto Nastaliq Urdu', serif !important;
-    line-height: 2; /* Urdu text ke liye line height barhana zaroori hai */
+    line-height: 2;
 }
 
-/* 4. English definitions aur Formulas ko RTL se bachayen */
-[dir="rtl"] .en-def,
-[dir="rtl"] .example-box .en,
-[dir="rtl"] .formula,
-[dir="rtl"] .badge {
-    direction: ltr;
-    text-align: left;
+/* 6. English Formulas aur Definitions ko LTR rakhein */
+.urdu-active .en-def,
+.urdu-active .example-box .en,
+.urdu-active .formula,
+.urdu-active .badge,
+.urdu-active .card-icon,
+.urdu-active .action-icon {
+    direction: ltr !important;
+    text-align: left !important;
     font-family: 'Inter', sans-serif !important;
 }
 
-/* 5. Mobile par Urdu font size adjust karna (Nastaliq thora bada hota hai) */
+/* 7. Mobile par Urdu font size adjust karna */
 @media (max-width: 768px) {
-    [dir="rtl"] .section-header h2,
-    [dir="rtl"] .accordion-header {
+    .urdu-active .section-header h2,
+    .urdu-active .accordion-header {
         font-size: 1.1rem !important;
     }
-    [dir="rtl"] .card p {
+    .urdu-active .card p {
         font-size: 0.9rem !important;
+    }
+    .urdu-active .top-bar {
+        padding: 0 12px !important;
     }
 }
 

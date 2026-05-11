@@ -289,10 +289,9 @@ function setLanguage(lang) {
     const targets = document.querySelectorAll('[data-urdu]:not(.formula):not(.en)');
 
     if (lang === 'urdu') {
-        document.body.setAttribute('dir', 'rtl');
+        // dir="rtl" ko body par lagane se pooray ka poori page right shift ho jata hai, isliye ye hata diya
         document.body.classList.add('urdu-active');
     } else {
-        document.body.removeAttribute('dir');
         document.body.classList.remove('urdu-active');
     }
 
