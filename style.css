@@ -2443,12 +2443,20 @@ tr:hover td {
         flex: 1;
         min-width: 0;
     }
-    [dir="rtl"] .logo {
-        margin-left: 10px;
-        margin-right: 0;
+    [dir="rtl"] .search-container {
+        flex: 1;
+        min-width: 0;
+        margin: 0 8px;
     }
     [dir="rtl"] .controls {
         flex-shrink: 0;
+        display: flex !important;
+    }
+    [dir="rtl"] .logo {
+        flex-shrink: 0;
+        margin-left: 8px;
+        margin-right: 0;
     }
 }
+
 
