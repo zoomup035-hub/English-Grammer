@@ -30,22 +30,32 @@
     --nav-bg: rgba(15, 23, 42, 0.9);
 }
 
+/* ============================================
+   COMPLETE RTL (URDU) FIXES
+   ============================================ */
+
 [dir="rtl"] {
-    font-family: 'Noto Nastaliq Urdu', 'Inter', serif;
+    direction: rtl;
     text-align: right;
+    font-family: 'Noto Nastaliq Urdu', 'Inter', serif;
 }
 
-[dir="rtl"] .example-box {
-    border-left: none;
-    border-right: 4px solid var(--secondary);
-    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+/* --- Header & Top Bar --- */
+[dir="rtl"] .top-bar {
+    direction: rtl;
 }
 
-[dir="rtl"] .example-actions {
-    right: auto;
-    left: 10px;
+[dir="rtl"] .slow-audio-toggle {
+    margin-right: 0;
+    margin-left: 10px;
 }
 
+[dir="rtl"] .lang-toggle {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/* --- Search --- */
 [dir="rtl"] .search-icon {
     left: auto;
     right: 14px;
@@ -53,6 +63,158 @@
 
 [dir="rtl"] .search-input {
     padding: 10px 40px 10px 16px;
+}
+
+/* --- Nav --- */
+[dir="rtl"] .nav-container {
+    direction: rtl;
+}
+
+[dir="rtl"] .accordion-header {
+    text-align: right;
+}
+
+/* --- Cards & Lists --- */
+[dir="rtl"] .card::before {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .card li {
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+[dir="rtl"] .card li::before {
+    left: auto;
+    right: 0;
+}
+
+/* --- Tables --- */
+[dir="rtl"] th {
+    text-align: right;
+}
+
+[dir="rtl"] td {
+    text-align: right;
+}
+
+/* --- Example Box --- */
+[dir="rtl"] .example-box {
+    border-left: 1px solid var(--border);
+    border-right: 4px solid var(--secondary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+[dir="rtl"] .example-box .en {
+    padding-right: 0;
+    padding-left: 80px;
+}
+
+[dir="rtl"] .example-actions {
+    right: auto;
+    left: 10px;
+}
+
+/* --- Tip Box --- */
+[dir="rtl"] .tip-box::before {
+    left: auto;
+    right: 24px;
+}
+
+/* --- Back to Top --- */
+[dir="rtl"] .back-to-top {
+    right: auto;
+    left: 30px;
+}
+
+/* --- Toast Notifications --- */
+[dir="rtl"] .toast-container {
+    right: auto;
+    left: 20px;
+}
+
+[dir="rtl"] .toast {
+    border-left: 1px solid var(--border);
+    border-right: 4px solid var(--primary);
+}
+
+[dir="rtl"] .toast.success {
+    border-left: 1px solid var(--border);
+    border-right-color: #10b981;
+}
+
+[dir="rtl"] .toast.info {
+    border-left: 1px solid var(--border);
+    border-right-color: #3b82f6;
+}
+
+[dir="rtl"] .toast.warning {
+    border-left: 1px solid var(--border);
+    border-right-color: #f59e0b;
+}
+
+/* --- Update Toast --- */
+[dir="rtl"] .update-toast {
+    right: auto;
+    left: 20px;
+    border-left: 1px solid var(--border);
+    border-right: 4px solid var(--accent);
+}
+
+/* --- Modal --- */
+[dir="rtl"] .close-modal {
+    right: auto;
+    left: 15px;
+}
+
+/* --- Quiz Options --- */
+[dir="rtl"] #quizOptions button {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+[dir="rtl"] #quizOptions button.selected {
+    transform: translateX(-5px);
+}
+
+/* --- Flashcard Deck Selector --- */
+[dir="rtl"] .flashcard-deck-selector select {
+    background-position: left 12px center;
+    padding-right: 12px !important;
+    padding-left: 35px !important;
+}
+
+/* --- Toast Slide Animation --- */
+[dir="rtl"] .toast {
+    animation: slideInLeft 0.3s ease forwards;
+}
+
+[dir="rtl"] .toast.removing {
+    animation: slideOutLeft 0.3s ease forwards;
+}
+
+[dir="rtl"] .update-toast {
+    animation: slideInLeft 0.4s ease forwards;
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutLeft {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(-100%); opacity: 0; }
+}
+
+/* --- scrollbar origin fix for RTL --- */
+[dir="rtl"] .table-wrapper {
+    direction: ltr;
+}
+
+[dir="rtl"] .table-wrapper > * {
+    direction: rtl;
 }
 
 * {
