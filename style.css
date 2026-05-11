@@ -2423,3 +2423,32 @@ tr:hover td {
     right: auto;
     left: 15px;
 }
+
+/* Mobile Specific RTL Stability */
+@media (max-width: 768px) {
+    [dir="rtl"] .top-bar {
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        padding: 0 12px;
+    }
+    [dir="rtl"] .bottom-nav {
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+    }
+    [dir="rtl"] .bottom-nav-item {
+        flex: 1;
+        min-width: 0;
+    }
+    [dir="rtl"] .logo {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+    [dir="rtl"] .controls {
+        flex-shrink: 0;
+    }
+}
+
