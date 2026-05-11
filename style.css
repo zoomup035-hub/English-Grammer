@@ -755,18 +755,41 @@ tr:last-child td {
     margin-bottom: 16px;
 }
 
+/* Brand Badge */
+.brand-badge {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 16px;
+    background: linear-gradient(45deg, #f59e0b, #fbbf24);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(245,158,11,0.4);
+    animation: pulse 2s infinite;
+    letter-spacing: 0.5px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(245,158,11,0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 4px 25px rgba(245,158,11,0.6); }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(245,158,11,0.4); }
+}
+
 /* Footer */
 footer {
-    background: var(--primary-dark);
-    color: white;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    color: var(--text);
     text-align: center;
-    padding: 40px 20px;
-    margin-top: 60px;
+    padding: 60px 20px;
+    margin-top: 80px;
+    border-top: 1px solid var(--border);
 }
 
 footer p {
     opacity: 0.8;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 /* Responsive */
