@@ -1,0 +1,12 @@
+{
+  "name": "english-grammar-master",
+  "version": "1.0.0",
+  "description": "English Grammar Master - PWA with offline support",
+  "private": true,
+  "scripts": {
+    "generate-icons": "node generate-icons.cjs"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  }
+}

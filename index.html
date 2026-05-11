@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Grammar Master — Roman Urdu Guide</title>
+    <!-- iOS Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Grammar Master">
+    <link rel="apple-touch-icon" href="icons/icon.svg">
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+
+<body data-theme="light">
+    <!-- SPLASH SCREEN -->
+    <div id="splashScreen" style="position:fixed;inset:0;z-index:9999;background:var(--primary);display:flex;align-items:center;justify-content:center;color:white;flex-direction:column;transition:opacity 0.5s;">
+        <i class="fas fa-graduation-cap" style="font-size:4rem;margin-bottom:20px;"></i>
+        <h2>English Grammar Master</h2>
+        <div style="margin-top:20px;border:3px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;width:30px;height:30px;animation:spin 1s linear infinite;"></div>
+    </div>
+
+    <a href="#parts-of-speech" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;padding:10px;background:var(--primary);color:white;" onfocus="this.style.left='10px';this.style.width='auto';this.style.height='auto'" onblur="this.style.left='-9999px'">Skip to Content</a>
+
+    <div class="progress-container" role="progressbar" aria-label="Reading progress">
+        <div class="progress-bar" id="readingProgress"></div>
+    </div>
+
+    <div class="top-bar">
+        <div class="logo" style="font-weight: 800; color: var(--primary); font-size: 1.2rem;">
+            <i class="fas fa-graduation-cap"></i> EGM
+        </div>
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" id="globalSearch" placeholder="Search topics (e.g. 'noun', 'maazi')...">
+        </div>
+        <div class="controls">
+            <label class="slow-audio-toggle">
+                <input type="checkbox" id="slowAudio"> Slow 🐢
+            </label>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="roman">Roman</button>
+                <button class="lang-btn" data-lang="urdu">اردو</button>
+            </div>
+            <button class="control-btn" id="themeToggle" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="control-btn" id="fontIncrease" title="Increase Font Size">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="control-btn" id="fontDecrease" title="Decrease Font Size">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+
+    <header style="margin-top: var(--header-height);">
+        <div class="stats-bar animate">
+            <div class="stat-item" title="User Level">
+                <i class="fas fa-medal" style="color: #8b5cf6;" aria-hidden="true"></i> <span id="userLevel">Beginner</span>
+            </div>
+            <div class="stat-item" title="Daily Streak">
+                <i class="fas fa-fire" style="color: #f97316;" aria-hidden="true"></i> <span id="streakCount">0</span>
+            </div>
+            <div class="stat-item" title="Your XP / Points">
+                <i class="fas fa-star" style="color: #f59e0b;" aria-hidden="true"></i> <span id="xpCount">0</span> XP
+            </div>
+            <div class="stat-item" title="Badges Earned" style="cursor:pointer;" onclick="openModal('badgeModal')">
+                <i class="fas fa-trophy" style="color: #3b82f6;" aria-hidden="true"></i> <span id="badgeCount">0</span> Badges
+            </div>
+        </div>
+        <div class="badge">📚 Complete Roman Urdu Guide</div>
+        <h1>English Grammar Master</h1>
+        <p>Parts of Speech aur 12 Tenses — Dum Simple Andaaz Mein. Har kisi ke liye asaan aur samajhne mein aasan.</p>
+    </header>
+
+    <nav>
+        <div class="nav-container desktop-nav">
+            <a href="#parts-of-speech" class="nav-link">Parts of Speech</a>
+            <a href="#noun" class="nav-link">Noun Types</a>
+            <a href="#tenses" class="nav-link">12 Tenses</a>
+            <a href="#practice" class="nav-link">Practice</a>
+            <a href="#timeline" class="nav-link">Timeline</a>
+            <a href="#cheatsheet" class="nav-link">Cheat Sheet</a>
+        </div>
+    </nav>
+
+    <!-- BOTTOM NAVIGATION (MOBILE) -->
+    <div class="bottom-nav">
+        <a href="#parts-of-speech" class="bottom-nav-item"><i class="fas fa-book"></i><span>Learn</span></a>
+        <a href="#tenses" class="bottom-nav-item"><i class="fas fa-clock"></i><span>Tenses</span></a>
+        <a href="#practice" class="bottom-nav-item"><i class="fas fa-gamepad"></i><span>Practice</span></a>
+        <a href="#settings" class="bottom-nav-item"><i class="fas fa-cog"></i><span>Settings</span></a>
+    </div>
+
+    <div class="container">
+
+        <!-- PARTS OF SPEECH OVERVIEW -->
+        <section class="section" id="parts-of-speech">
+            <div class="section-header">
+                <h2 data-urdu="حصہ کلام">
+                    Parts of Speech 
+                    <button class="action-icon" onclick="shareOnWhatsApp('Parts of Speech', 'parts-of-speech')" title="Share on WhatsApp" style="border:none; background:transparent; font-size: 1rem; color: #25D366; cursor:pointer;">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                </h2>
+                <p data-urdu="انگریزی زبان میں لفظوں کی 8 بنیادی اقسام۔ ان کو 'PANIC VAC' سے یاد رکھیں۔">Angrezi zubaan mein lafzon ki 8 bunyaadi iqsamaat. In ko "PANIC VAC" se yaad rakhein.</p>
+                <div class="divider"></div>
+            </div>
+
+            <div class="grid">
+                <div class="card" id="card-noun">
+                    <div class="card-icon"><i class="fas fa-tag"></i></div>
+                    <h3>
+                        <span data-urdu="اسم">Noun</span>
+                        <button class="fav-btn" onclick="toggleFav('card-noun')"><i class="fas fa-heart"></i></button>
+                    </h3>
+                    <p class="subtitle" data-urdu="اسم / نام">Ism / Naam</p>
+                    <p class="en-def">A word that names a person, place, thing, or idea.</p>
+                    <p data-urdu="کسی بھی شخص، چیز، جگہ یا خیال کا نام۔">Kisi bhi shakhs, cheez, jagah ya khayaal ka naam.</p>
+                </div>
+                <div class="card" id="card-pronoun">
+                    <div class="card-icon"><i class="fas fa-user-tag"></i></div>
+                    <h3>
+                        <span data-urdu="ضمیر">Pronoun</span>
+                        <button class="fav-btn" onclick="toggleFav('card-pronoun')"><i class="fas fa-heart"></i></button>
+                    </h3>
+                    <p class="subtitle" data-urdu="ضمیر">Zameer</p>
+                    <p class="en-def">A word used in place of a noun.</p>
+                    <p data-urdu="اسم کی جگہ استعمال ہونے والا لفظ۔">Ism ki jagah istemaal hone wala lafz.</p>
+                </div>
+                <div class="card" id="card-adjective">
+                    <div class="card-icon"><i class="fas fa-magic"></i></div>
+                    <h3>
+                        <span data-urdu="صفت">Adjective</span>
+                        <button class="fav-btn" onclick="toggleFav('card-adjective')"><i class="fas fa-heart"></i></button>
+                    </h3>
+                    <p class="subtitle" data-urdu="صفت">Sifat</p>
+                    <p class="en-def">A word that describes a noun or pronoun.</p>
+                    <p data-urdu="اسم یا ضمیر کی خاصیت بیان کرتا ہے۔">Ism ya Zameer ki khaasiyat bayan karta hai.</p>
+                </div>
+                <div class="card" id="card-verb">
+                    <div class="card-icon"><i class="fas fa-running"></i></div>
+                    <h3>
+                        <span data-urdu="فعل">Verb</span>
+                        <button class="fav-btn" onclick="toggleFav('card-verb')"><i class="fas fa-heart"></i></button>
+                    </h3>
+                    <p class="subtitle" data-urdu="فعل / عمل">Fe'l / Amal</p>
+                    <p class="en-def">A word that shows action or state of being.</p>
+                    <p data-urdu="کام یا حالت کو ظاہر کرتا ہے۔">Kaam ya haalat ko zahir karta hai.</p>
+                </div>
+                <div class="card" id="card-adverb">
+                    <div class="card-icon"><i class="fas fa-clock"></i></div>
+                    <h3>
+                        <span data-urdu="متعلق فعل">Adverb</span>
+                        <button class="fav-btn" onclick="toggleFav('card-adverb')"><i class="fas fa-heart"></i></button>
+                    </h3>
+                    <p class="subtitle" data-urdu="متعلق صفت">Mutabiq-e-sifat</p>
+                    <p class="en-def">A word that modifies a verb, adjective, or another adverb.</p>
+                    <p data-urdu="فعل، صفت یا دوسرے متعلق صفت کو مزید واضح کرتا ہے۔">Fe'l, Sifat ya dosray Mutabiq-e-sifat ko mazeed wazeh karta hai.</p>
+                </div>
+                <div class="card" id="card-preposition">
+                    <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>
+                        <span data-urdu="حرف جار">Preposition</span>
+                        <button class="fav-btn" onclick="toggleFav('card-preposition')"><i class="fas fa-heart"></i></button>
+                    </h3>
+                    <p class="subtitle" data-urdu="حرف جر">Harf-e-jarr</p>
+                    <p class="en-def">A word showing relationship between words.</p>
+                    <p data-urdu="دو لفظوں کے درمیان رشتہ بیان کرتا ہے۔">Do lafzon ke darmiyaan rishta bayan karta hai.</p>
+                </div>
+                <div class="card" id="card-conjunction">
+                    <div class="card-icon"><i class="fas fa-link"></i></div>
+                    <h3>
+                        <span data-urdu="حرف عطف">Conjunction</span>
+                        <button class="fav-btn" onclick="toggleFav('card-conjunction')"><i class="fas fa-heart"></i></button>
+                    </h3>
+                    <p class="subtitle" data-urdu="حرف ربط">Harf-e-rabt</p>
+                    <p class="en-def">A word that joins words or sentences.</p>
+                    <p data-urdu="دو الگ الگ جملوں یا لفظوں کو جوڑتا ہے۔">Do alag-alag jumlon ya lafzon ko jorhta hai.</p>
+                </div>
+                <div class="card" id="card-interjection">
+                    <div class="card-icon"><i class="fas fa-exclamation"></i></div>
+                    <h3>
+                        <span data-urdu="حرف ندا">Interjection</span>
+                        <button class="fav-btn" onclick="toggleFav('card-interjection')"><i class="fas fa-heart"></i></button>
+                    </h3>
+                    <p class="subtitle" data-urdu="نداء / اظہار جذبات">Nidaa / Izhar-e-jazbaat</p>
+                    <p class="en-def">A word that expresses strong emotion.</p>
+                    <p data-urdu="اچانک نکلی ہوئی آواز یا جذبات کا اظہار۔">Achank nikli hui aawaaz ya jazbaat ka izhaar.</p>
+                </div>
+            </div>
+            <label class="notes-label">Apne Notes (Saves automatically):</label>
+            <textarea class="notes-area" id="notes-parts-of-speech" placeholder="Yahan apne notes likhein..."></textarea>
+        </section>
+
+        <!-- NOUN TYPES -->
+        <section class="section" id="noun">
+            <div class="section-header">
+                <h2 data-urdu="اسم کی اقسام">Noun ki Iqsaam</h2>
+                <p data-urdu="اسم کے 5 بڑے حصے — ہر قسم کی الگ پہچان۔">Ism ke 5 barray hissay — har qism ki alag pehchaan.</p>
+                <div class="divider"></div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Qism</th>
+                            <th>Tareef</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Proper Noun</strong></td>
+                            <td>Khaas naam (baray harf se shuru)</td>
+                            <td>Pakistan, Karachi, Ali</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Common Noun</strong></td>
+                            <td>Aam naam</td>
+                            <td>boy, city, country, book</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Collective Noun</strong></td>
+                            <td>Group ka naam</td>
+                            <td>team, army, family</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Abstract Noun</strong></td>
+                            <td>Jazbaat / Khayaal</td>
+                            <td>love, happiness, honesty</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Material Noun</strong></td>
+                            <td>Jis cheez se kuch bana ho</td>
+                            <td>gold, water, wood, iron</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <label class="notes-label">Apne Notes (Saves automatically):</label>
+            <textarea class="notes-area" id="notes-noun-types" placeholder="Yahan apne notes likhein..."></textarea>
+        </section>
+
+        <!-- PRONOUN TYPES -->
+        <section class="section" id="pronoun-types">
+            <div class="section-header"><h2>Pronoun ki Iqsaam</h2><div class="divider"></div></div>
+            <div class="table-wrapper"><table><thead><tr><th>Qism</th><th>Tareef</th><th>Example</th></tr></thead><tbody>
+                <tr><td><strong>Personal</strong></td><td>Shakhs ka zameer</td><td>I, you, he, she, it, we, they</td></tr>
+                <tr><td><strong>Possessive</strong></td><td>Milkiyat zahir kare</td><td>my, your, his, her, our, their</td></tr>
+                <tr><td><strong>Reflexive</strong></td><td>Apne aap ko</td><td>myself, yourself, himself</td></tr>
+                <tr><td><strong>Demonstrative</strong></td><td>Ishara kare</td><td>this, that, these, those</td></tr>
+                <tr><td><strong>Interrogative</strong></td><td>Sawaal poochne ke liye</td><td>who, what, which, whom</td></tr>
+                <tr><td><strong>Relative</strong></td><td>Do jumle jorhe</td><td>who, whom, whose, which, that</td></tr>
+            </tbody></table></div>
+        </section>
+
+        <!-- ADJECTIVE TYPES -->
+        <section class="section" id="adjective-types">
+            <div class="section-header"><h2>Adjective ki Iqsaam</h2><div class="divider"></div></div>
+            <div class="table-wrapper"><table><thead><tr><th>Qism</th><th>Tareef</th><th>Example</th></tr></thead><tbody>
+                <tr><td><strong>Quality</strong></td><td>Kaise hai — sifat bataye</td><td>good, tall, beautiful, smart</td></tr>
+                <tr><td><strong>Quantity</strong></td><td>Kitna hai</td><td>some, much, little, enough</td></tr>
+                <tr><td><strong>Number</strong></td><td>Kitne hain — tadaad</td><td>one, two, first, second</td></tr>
+                <tr><td><strong>Demonstrative</strong></td><td>Ishara kare</td><td>this, that, these, those</td></tr>
+                <tr><td><strong>Interrogative</strong></td><td>Sawal kare</td><td>which, what, whose</td></tr>
+            </tbody></table></div>
+        </section>
+
+        <!-- VERB TYPES -->
+        <section class="section" id="verb-types">
+            <div class="section-header"><h2>Verb ki Iqsaam</h2><div class="divider"></div></div>
+            <div class="table-wrapper"><table><thead><tr><th>Qism</th><th>Tareef</th><th>Example</th></tr></thead><tbody>
+                <tr><td><strong>Transitive</strong></td><td>Object chahiye</td><td>He <strong>eats</strong> food.</td></tr>
+                <tr><td><strong>Intransitive</strong></td><td>Object nahi chahiye</td><td>She <strong>sleeps</strong>.</td></tr>
+                <tr><td><strong>Helping/Auxiliary</strong></td><td>Main verb ki madad kare</td><td>is, am, are, was, were, has, have</td></tr>
+                <tr><td><strong>Modal</strong></td><td>Possibility/permission bataye</td><td>can, could, may, might, should, must</td></tr>
+            </tbody></table></div>
+        </section>
+
+        <!-- ADVERB TYPES -->
+        <section class="section" id="adverb-types">
+            <div class="section-header"><h2>Adverb ki Iqsaam</h2><div class="divider"></div></div>
+            <div class="table-wrapper"><table><thead><tr><th>Qism</th><th>Tareef</th><th>Example</th></tr></thead><tbody>
+                <tr><td><strong>Time</strong></td><td>Kab — waqt bataye</td><td>now, today, yesterday, soon</td></tr>
+                <tr><td><strong>Place</strong></td><td>Kahan — jagah bataye</td><td>here, there, everywhere, outside</td></tr>
+                <tr><td><strong>Manner</strong></td><td>Kaise — tareeqa bataye</td><td>slowly, quickly, carefully</td></tr>
+                <tr><td><strong>Degree</strong></td><td>Kitna — darjah bataye</td><td>very, too, quite, almost</td></tr>
+                <tr><td><strong>Frequency</strong></td><td>Kitni baar — bar bar</td><td>always, often, never, sometimes</td></tr>
+            </tbody></table></div>
+        </section>
+
+        <!-- PREPOSITION TYPES -->
+        <section class="section" id="preposition-types">
+            <div class="section-header"><h2>Preposition ki Iqsaam</h2><div class="divider"></div></div>
+            <div class="table-wrapper"><table><thead><tr><th>Qism</th><th>Tareef</th><th>Example</th></tr></thead><tbody>
+                <tr><td><strong>Time</strong></td><td>Waqt bataye</td><td>at 5 PM, on Monday, in July</td></tr>
+                <tr><td><strong>Place</strong></td><td>Jagah bataye</td><td>in the box, on the table, at home</td></tr>
+                <tr><td><strong>Direction</strong></td><td>Simt bataye</td><td>to school, towards me, into the room</td></tr>
+                <tr><td><strong>Agent</strong></td><td>Zariya bataye</td><td>by car, with a pen</td></tr>
+            </tbody></table></div>
+        </section>
+
+        <!-- CONJUNCTION TYPES -->
+        <section class="section" id="conjunction-types">
+            <div class="section-header"><h2>Conjunction ki Iqsaam</h2><div class="divider"></div></div>
+            <div class="table-wrapper"><table><thead><tr><th>Qism</th><th>Tareef</th><th>Example</th></tr></thead><tbody>
+                <tr><td><strong>Coordinating</strong></td><td>Barabar ki cheezein jorhe</td><td>and, but, or, nor, for, yet, so</td></tr>
+                <tr><td><strong>Subordinating</strong></td><td>Dependent clause jorhe</td><td>because, although, if, when, while</td></tr>
+                <tr><td><strong>Correlative</strong></td><td>Jorhe mein aaye</td><td>either...or, neither...nor, both...and</td></tr>
+            </tbody></table></div>
+        </section>
+
+        <!-- INTERJECTION TYPES -->
+        <section class="section" id="interjection-types">
+            <div class="section-header"><h2>Interjection ki Iqsaam</h2><div class="divider"></div></div>
+            <div class="table-wrapper"><table><thead><tr><th>Qism</th><th>Jazbaat</th><th>Example</th></tr></thead><tbody>
+                <tr><td><strong>Joy</strong></td><td>Khushi</td><td>Hurray! Wow! Yay!</td></tr>
+                <tr><td><strong>Sorrow</strong></td><td>Dukh</td><td>Alas! Oh no!</td></tr>
+                <tr><td><strong>Surprise</strong></td><td>Hairat</td><td>Oh! What! Really!</td></tr>
+                <tr><td><strong>Approval</strong></td><td>Pasandeedgi</td><td>Well done! Bravo! Great!</td></tr>
+            </tbody></table></div>
+        </section>
+
+        <!-- TENSES -->
+        <section class="section" id="tenses">
+            <div class="section-header">
+                <h2 data-urdu="12 انگریزی زمانے">12 English Tenses</h2>
+                <p data-urdu="ہر زمانے کا فارمولا، مثال اور عام غلطیاں۔">Har tense ka formula, example aur common mistakes.</p>
+                <div class="divider"></div>
+            </div>
+
+            <!-- PRESENT TENSE -->
+            <div class="tense-group tense-present">
+                <div class="tense-group-header">
+                    <div class="number"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <h3>Present Tenses <span style="color: var(--text-light); font-weight: 400;">(Haal)</span></h3>
+                    </div>
+                </div>
+
+                <div class="accordion active" data-tense="present-simple">
+                    <button class="accordion-header" data-urdu="1. فعل حال مطلق — عام حال">
+                        1. Present Simple — Aam Haal
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + V1 (+s/es)</p>
+                            <p style="margin-bottom: 15px;"><strong>Use:</strong> Aadat, haqeeqat, ya rozmarra ke kaam.</p>
+                            <div class="tip-box" style="margin: 10px 0; border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.05);">
+                                <strong>Galti:</strong> He/She/It ke saath <strong>s/es</strong> lagana mat bhooliye!
+                            </div>
+                            <div class="example-box">
+                                <div class="en">I <strong>eat</strong> breakfast.</div>
+                                <div class="ur">Main nashta karta hoon.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('I eat breakfast')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('I eat breakfast')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="present-continuous">
+                    <button class="accordion-header">
+                        2. Present Continuous — Jaari Haal
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + is/am/are + V+ing</p>
+                            <div class="example-box">
+                                <div class="en">She <strong>is studying</strong>.</div>
+                                <div class="ur">Woh parh rahi hai.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('She is studying')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('She is studying')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="present-perfect">
+                    <button class="accordion-header">
+                        3. Present Perfect — Mukammal Haal
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + have/has + V3</p>
+                            <p style="margin-bottom: 15px;"><strong>Use:</strong> Kaam ho chuka hai lekin waqt nahi bataya.</p>
+                            <div class="example-box">
+                                <div class="en">I <strong>have eaten</strong> lunch.</div>
+                                <div class="ur">Main dopahar ka khana kha chuka hoon.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('I have eaten lunch')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('I have eaten lunch')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="present-perfect-continuous">
+                    <button class="accordion-header">
+                        4. Present Perfect Continuous — Jaari Mukammal Haal
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + have/has been + V+ing</p>
+                            <p style="margin-bottom: 15px;"><strong>Use:</strong> Kaam kuch waqt se jaari hai.</p>
+                            <div class="example-box">
+                                <div class="en">She <strong>has been waiting</strong> for 2 hours.</div>
+                                <div class="ur">Woh 2 ghantay se intezaar kar rahi hai.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('She has been waiting for 2 hours')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('She has been waiting for 2 hours')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAST TENSE -->
+            <div class="tense-group tense-past" style="margin-top: 40px;">
+                <div class="tense-group-header">
+                    <div class="number"><i class="fas fa-history"></i></div>
+                    <div>
+                        <h3 data-urdu="زمانه ماضی">Past Tenses <span style="color: var(--text-light); font-weight: 400;" data-urdu="(گزرا ہوا وقت)">(Maazi)</span></h3>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="past-simple">
+                    <button class="accordion-header" data-urdu="5. فعل ماضی مطلق — عام ماضی">
+                        5. Past Simple — Aam Maazi
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + V2</p>
+                            <div class="example-box">
+                                <div class="en">I <strong>went</strong> to Karachi.</div>
+                                <div class="ur">Main Karachi gaya.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('I went to Karachi')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('I went to Karachi')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="past-continuous">
+                    <button class="accordion-header">
+                        6. Past Continuous — Jaari Maazi
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + was/were + V+ing</p>
+                            <p style="margin-bottom: 15px;"><strong>Use:</strong> Kaam maazi mein jaari tha.</p>
+                            <div class="example-box">
+                                <div class="en">They <strong>were playing</strong> cricket.</div>
+                                <div class="ur">Woh cricket khel rahe thay.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('They were playing cricket')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('They were playing cricket')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="past-perfect">
+                    <button class="accordion-header">
+                        7. Past Perfect — Mukammal Maazi
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + had + V3</p>
+                            <p style="margin-bottom: 15px;"><strong>Use:</strong> Ek kaam doosre se pehle ho chuka tha.</p>
+                            <div class="example-box">
+                                <div class="en">I <strong>had finished</strong> before he came.</div>
+                                <div class="ur">Main us ke aane se pehle khatam kar chuka tha.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('I had finished before he came')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('I had finished before he came')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="past-perfect-continuous">
+                    <button class="accordion-header">
+                        8. Past Perfect Continuous — Jaari Mukammal Maazi
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + had been + V+ing</p>
+                            <p style="margin-bottom: 15px;"><strong>Use:</strong> Kaam kuch waqt se jaari tha (kisi event se pehle).</p>
+                            <div class="example-box">
+                                <div class="en">She <strong>had been studying</strong> for 3 hours.</div>
+                                <div class="ur">Woh 3 ghantay se parh rahi thi.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('She had been studying for 3 hours')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('She had been studying for 3 hours')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FUTURE TENSE -->
+            <div class="tense-group tense-future" style="margin-top: 40px;">
+                <div class="tense-group-header">
+                    <div class="number"><i class="fas fa-forward"></i></div>
+                    <div>
+                        <h3 data-urdu="زمانه مستقبل">Future Tenses <span style="color: var(--text-light); font-weight: 400;" data-urdu="(آنے والا وقت)">(Mustaqbil)</span></h3>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="future-simple">
+                    <button class="accordion-header" data-urdu="9. فعل مستقبل مطلق — عام مستقبل">
+                        9. Future Simple — Aam Mustaqbil
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + will + V1</p>
+                            <div class="example-box">
+                                <div class="en">We <strong>will win</strong> the match.</div>
+                                <div class="ur">Hum match jeet jayenge.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('We will win the match')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('We will win the match')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="future-continuous">
+                    <button class="accordion-header">
+                        10. Future Continuous — Jaari Mustaqbil
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + will be + V+ing</p>
+                            <p style="margin-bottom: 15px;"><strong>Use:</strong> Kaam mustaqbil mein jaari hoga.</p>
+                            <div class="example-box">
+                                <div class="en">I <strong>will be working</strong> at 8 PM.</div>
+                                <div class="ur">Main raat 8 bajay kaam kar raha hounga.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('I will be working at 8 PM')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('I will be working at 8 PM')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="future-perfect">
+                    <button class="accordion-header">
+                        11. Future Perfect — Mukammal Mustaqbil
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + will have + V3</p>
+                            <p style="margin-bottom: 15px;"><strong>Use:</strong> Kaam mustaqbil mein kisi waqt tak ho chuka hoga.</p>
+                            <div class="example-box">
+                                <div class="en">She <strong>will have left</strong> by then.</div>
+                                <div class="ur">Woh tab tak ja chuki hogi.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('She will have left by then')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('She will have left by then')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" data-tense="future-perfect-continuous">
+                    <button class="accordion-header">
+                        12. Future Perfect Continuous — Jaari Mukammal Mustaqbil
+                        <span class="icon">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <div class="accordion-content">
+                            <p class="formula">Subject + will have been + V+ing</p>
+                            <p style="margin-bottom: 15px;"><strong>Use:</strong> Kaam kuch waqt se jaari hoga mustaqbil mein.</p>
+                            <div class="example-box">
+                                <div class="en">By 2027, I <strong>will have been living</strong> here for 10 years.</div>
+                                <div class="ur">2027 tak, main yahan 10 saal se reh raha hounga.</div>
+                                <div class="example-actions">
+                                    <button class="action-icon" onclick="speak('By 2027, I will have been living here for 10 years')"><i class="fas fa-volume-up"></i></button>
+                                    <button class="action-icon" onclick="copy('By 2027, I will have been living here for 10 years')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE PRACTICE -->
+        <section class="section" id="practice">
+            <div class="section-header">
+                <h2 data-urdu="مشق">Interactive Practice</h2>
+                <p data-urdu="روزانہ کا چیلنج اور کوئز۔">Daily challenges and quizzes.</p>
+                <div class="divider"></div>
+            </div>
+
+            <!-- Daily Challenge Card -->
+            <div class="card" id="dailyChallenge" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; margin-bottom: 20px; border: none;">
+                <h3><i class="fas fa-bolt"></i> Daily Challenge</h3>
+                <p id="challengeText">Loading today's challenge...</p>
+                <div style="margin-top: 15px;">
+                    <button class="nav-link" onclick="solveChallenge()" style="background: white; color: var(--primary); width: auto; font-weight: 700;">Solve & Earn 50 XP</button>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- Flashcards with Deck Selector -->
+                <div class="card flashcard-container" id="flashcard">
+                    <div class="flashcard-deck-selector" style="margin-bottom: 15px;">
+                        <select id="flashcardDeck" onchange="changeDeck(this.value)" style="padding: 8px 12px; border-radius: 8px; border: 2px solid var(--primary); background: var(--card); color: var(--text); font-weight: 600; cursor: pointer;">
+                            <option value="noun">📚 Noun Deck (5 Cards)</option>
+                            <option value="verb">🏃 Verb Deck (5 Cards)</option>
+                            <option value="tense">⏰ Tense Deck (5 Cards)</option>
+                            <option value="adjective">✨ Adjective Deck (5 Cards)</option>
+                            <option value="adverb">🕐 Adverb Deck (5 Cards)</option>
+                        </select>
+                        <span id="flashcardCounter" style="margin-left: 10px; color: var(--text-light); font-size: 0.9rem;">1 / 5</span>
+                    </div>
+                    <div class="flashcard" id="flashcardInner">
+                        <div class="flashcard-front">
+                            <h3><i class="fas fa-clone"></i> <span id="flashcardTitle">Noun Flashcard</span></h3>
+                            <p id="cardFrontText" style="font-size: 1.2rem; margin: 20px 0;">What is a Noun?</p>
+                            <small>(Click to flip)</small>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3><i class="fas fa-check-circle"></i> Jawab</h3>
+                            <p id="cardBackText" style="font-size: 1.2rem; margin: 20px 0;">Naam (Person, Place, Thing)</p>
+                            <small>(Click to flip back)</small>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+                        <button class="control-btn" id="prevCard"><i class="fas fa-chevron-left"></i></button>
+                        <button class="control-btn" id="shuffleDeck" title="Shuffle"><i class="fas fa-random"></i></button>
+                        <button class="control-btn" id="nextCard"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Quiz -->
+                <div class="card quiz-container" id="quiz">
+                    <div id="quizStart">
+                        <h3><i class="fas fa-tasks"></i> Grammar Quiz</h3>
+                        <p>20 sawalon ka jawab dein aur check karein aap kitne mahir hain.</p>
+                        <div style="margin-top: 15px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                            <span class="quiz-badge" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">🏆 20 Questions</span>
+                            <span class="quiz-badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">⭐ 100 XP</span>
+                        </div>
+                        <button class="nav-link" style="margin-top: 20px; width: 100%;" id="startQuizBtn">Start Quiz</button>
+                    </div>
+                    <div id="quizBox" class="hidden">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; align-items: center;">
+                            <span id="quizProgress">Question 1/20</span>
+                            <div style="width: 100px; height: 6px; background: var(--border); border-radius: 3px; margin: 0 10px;">
+                                <div id="quizProgressBar" style="width: 0%; height: 100%; background: var(--primary); border-radius: 3px; transition: width 0.3s;"></div>
+                            </div>
+                            <span id="quizScore">Score: 0</span>
+                        </div>
+                        <h4 id="quizQuestion" style="margin-bottom: 20px; font-size: 1.1rem;">He ___ a book every day.</h4>
+                        <div id="quizOptions" style="display: flex; flex-direction: column; gap: 10px;">
+                            <!-- Options injected here -->
+                        </div>
+                    </div>
+                    <div id="quizResult" class="hidden" style="text-align: center; position: relative;">
+                        <div id="confettiContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden;"></div>
+                        <div style="font-size: 3rem; margin-bottom: 10px;">🎉</div>
+                        <h3>Zabardast!</h3>
+                        <p id="finalScore">Aapka score 20/20 hai.</p>
+                        <div id="quizBadgeEarned" style="margin: 15px 0; display: none;">
+                            <div style="background: linear-gradient(135deg, #f59e0b, #f97316); color: white; padding: 10px 20px; border-radius: 20px; display: inline-block; font-weight: 700;">
+                                🏆 Perfect Score Badge Earned!
+                            </div>
+                        </div>
+                        <button class="nav-link" style="margin-top: 20px;" onclick="resetQuiz()">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TENSE TIMELINE -->
+        <section class="section" id="timeline">
+            <div class="section-header">
+                <h2 data-urdu="ٹائم لائن">Tense Timeline</h2>
+                <p data-urdu="تصور کریں کہ کون سا زمانہ کب ہوتا ہے۔">Visualise karein ke kaunsa tense kab hota hai.</p>
+                <div class="divider"></div>
+            </div>
+
+            <div class="card" style="padding: 40px 20px; overflow-x: auto;">
+                <div class="timeline-graphic" style="display: flex; align-items: center; justify-content: space-between; min-width: 800px; position: relative;">
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: var(--border); z-index: 1;"></div>
+
+                    <div class="timeline-point" data-tense="past" onclick="openTenseAccordion('past')" style="z-index: 2; text-align: center; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="width: 20px; height: 20px; background: #f59e0b; border-radius: 50%; margin: 0 auto 10px; box-shadow: 0 0 0 4px var(--bg);"></div>
+                        <strong>Past</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-light);">Jo ho chuka</p>
+                    </div>
+
+                    <div class="timeline-point" data-tense="present" onclick="openTenseAccordion('present')" style="z-index: 2; text-align: center; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="width: 30px; height: 30px; background: #10b981; border-radius: 50%; margin: 0 auto 10px; border: 4px solid var(--bg); box-shadow: 0 0 0 4px var(--bg);"></div>
+                        <strong>Now</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-light);">Abhi ka waqt</p>
+                    </div>
+
+                    <div class="timeline-point" data-tense="future" onclick="openTenseAccordion('future')" style="z-index: 2; text-align: center; cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="width: 20px; height: 20px; background: #3b82f6; border-radius: 50%; margin: 0 auto 10px; box-shadow: 0 0 0 4px var(--bg);"></div>
+                        <strong>Future</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-light);">Jo hone wala hai</p>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 20px; color: var(--text-light); font-size: 0.9rem;">
+                    <i class="fas fa-hand-pointer"></i> Click on Past, Now, or Future to jump to that tense section
+                </p>
+            </div>
+        </section>
+
+        <!-- IRREGULAR VERBS -->
+        <section class="section" id="verbs">
+            <div class="section-header">
+                <h2 data-urdu="بے قاعدہ افعال">Irregular Verbs</h2>
+                <p data-urdu="وہ افعال جن کی دوسری اور تیسری حالت مختلف ہوتی ہے۔">Common verbs with irregular V2 and V3 forms.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="table-wrapper">
+                <input type="text" id="verbSearch" placeholder="Search verbs..." class="search-input" style="max-width: 300px; margin-bottom: 15px;">
+                <table id="verbTable">
+                    <thead>
+                        <tr><th>V1 (Base)</th><th>V2 (Past)</th><th>V3 (Participle)</th><th>Urdu</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Go</td><td>Went</td><td>Gone</td><td>Jana</td></tr>
+                        <tr><td>Eat</td><td>Ate</td><td>Eaten</td><td>Khana</td></tr>
+                        <tr><td>See</td><td>Saw</td><td>Seen</td><td>Dekhna</td></tr>
+                        <tr><td>Take</td><td>Took</td><td>Taken</td><td>Lena</td></tr>
+                        <tr><td>Write</td><td>Wrote</td><td>Written</td><td>Likhna</td></tr>
+                        <tr><td>Speak</td><td>Spoke</td><td>Spoken</td><td>Bolna</td></tr>
+                        <tr><td>Think</td><td>Thought</td><td>Thought</td><td>Sochna</td></tr>
+                        <tr><td>Come</td><td>Came</td><td>Come</td><td>Aana</td></tr>
+                        <tr><td>Drink</td><td>Drank</td><td>Drunk</td><td>Peena</td></tr>
+                        <tr><td>Sleep</td><td>Slept</td><td>Slept</td><td>Sona</td></tr>
+                        <tr><td>Run</td><td>Ran</td><td>Run</td><td>Dorna</td></tr>
+                        <tr><td>Read</td><td>Read</td><td>Read</td><td>Parhna</td></tr>
+                        <tr><td>Buy</td><td>Bought</td><td>Bought</td><td>Khareedna</td></tr>
+                        <tr><td>Sell</td><td>Sold</td><td>Sold</td><td>Bechna</td></tr>
+                        <tr><td>Bring</td><td>Brought</td><td>Brought</td><td>Lana</td></tr>
+                        <tr><td>Choose</td><td>Chose</td><td>Chosen</td><td>Chun'na</td></tr>
+                        <tr><td>Do</td><td>Did</td><td>Done</td><td>Karna</td></tr>
+                        <tr><td>Find</td><td>Found</td><td>Found</td><td>Talashna</td></tr>
+                        <tr><td>Forget</td><td>Forgot</td><td>Forgotten</td><td>Bhoolna</td></tr>
+                        <tr><td>Give</td><td>Gave</td><td>Given</td><td>Dena</td></tr>
+                        <tr><td>Hear</td><td>Heard</td><td>Heard</td><td>Sun'na</td></tr>
+                        <tr><td>Keep</td><td>Kept</td><td>Kept</td><td>Rakhna</td></tr>
+                        <tr><td>Know</td><td>Knew</td><td>Known</td><td>Janna</td></tr>
+                        <tr><td>Leave</td><td>Left</td><td>Left</td><td>Chorna</td></tr>
+                        <tr><td>Make</td><td>Made</td><td>Made</td><td>Banana</td></tr>
+                        <tr><td>Meet</td><td>Met</td><td>Met</td><td>Milna</td></tr>
+                        <tr><td>Pay</td><td>Paid</td><td>Paid</td><td>Ada Karna</td></tr>
+                        <tr><td>Say</td><td>Said</td><td>Said</td><td>Kehna</td></tr>
+                        <tr><td>Send</td><td>Sent</td><td>Sent</td><td>Bhejna</td></tr>
+                        <tr><td>Sing</td><td>Sang</td><td>Sung</td><td>Gana</td></tr>
+                        <tr><td>Sit</td><td>Sat</td><td>Sat</td><td>Baithna</td></tr>
+                        <tr><td>Stand</td><td>Stood</td><td>Stood</td><td>Khara hona</td></tr>
+                        <tr><td>Tell</td><td>Told</td><td>Told</td><td>Batana</td></tr>
+                        <tr><td>Understand</td><td>Understood</td><td>Understood</td><td>Samajhna</td></tr>
+                        <tr><td>Wear</td><td>Wore</td><td>Worn</td><td>Pehen'na</td></tr>
+                        <tr><td>Win</td><td>Won</td><td>Won</td><td>Jeetna</td></tr>
+                        <tr><td>Begin</td><td>Began</td><td>Begun</td><td>Shuru Karna</td></tr>
+                        <tr><td>Break</td><td>Broke</td><td>Broken</td><td>Torna</td></tr>
+                        <tr><td>Build</td><td>Built</td><td>Built</td><td>Banana</td></tr>
+                        <tr><td>Catch</td><td>Caught</td><td>Caught</td><td>Pakarna</td></tr>
+                        <tr><td>Cut</td><td>Cut</td><td>Cut</td><td>Kaatna</td></tr>
+                        <tr><td>Draw</td><td>Drew</td><td>Drawn</td><td>Banana/Kheenchna</td></tr>
+                        <tr><td>Drive</td><td>Drove</td><td>Driven</td><td>Chalana</td></tr>
+                        <tr><td>Fall</td><td>Fell</td><td>Fallen</td><td>Girna</td></tr>
+                        <tr><td>Feed</td><td>Fed</td><td>Fed</td><td>Khilana</td></tr>
+                        <tr><td>Feel</td><td>Felt</td><td>Felt</td><td>Mehsoos Karna</td></tr>
+                        <tr><td>Fight</td><td>Fought</td><td>Fought</td><td>Larna</td></tr>
+                        <tr><td>Fly</td><td>Flew</td><td>Flown</td><td>Urna</td></tr>
+                        <tr><td>Freeze</td><td>Froze</td><td>Frozen</td><td>Jamna</td></tr>
+                        <tr><td>Get</td><td>Got</td><td>Got/Gotten</td><td>Hasil Karna</td></tr>
+                        <tr><td>Grow</td><td>Grew</td><td>Grown</td><td>Barhna/Ugana</td></tr>
+                        <tr><td>Hang</td><td>Hung</td><td>Hung</td><td>Latakna</td></tr>
+                        <tr><td>Have</td><td>Had</td><td>Had</td><td>Rakhna</td></tr>
+                        <tr><td>Hide</td><td>Hid</td><td>Hidden</td><td>Chupana</td></tr>
+                        <tr><td>Hit</td><td>Hit</td><td>Hit</td><td>Maarna</td></tr>
+                        <tr><td>Hold</td><td>Held</td><td>Held</td><td>Pakarna</td></tr>
+                        <tr><td>Hurt</td><td>Hurt</td><td>Hurt</td><td>Dard Dena</td></tr>
+                        <tr><td>Lay</td><td>Laid</td><td>Laid</td><td>Rakhna</td></tr>
+                        <tr><td>Lead</td><td>Led</td><td>Led</td><td>Rehbari Karna</td></tr>
+                        <tr><td>Learn</td><td>Learnt</td><td>Learnt</td><td>Seekhna</td></tr>
+                        <tr><td>Lend</td><td>Lent</td><td>Lent</td><td>Udhar Dena</td></tr>
+                        <tr><td>Let</td><td>Let</td><td>Let</td><td>Rehne Dena</td></tr>
+                        <tr><td>Lie</td><td>Lay</td><td>Lain</td><td>Letna</td></tr>
+                        <tr><td>Light</td><td>Lit</td><td>Lit</td><td>Jalana</td></tr>
+                        <tr><td>Lose</td><td>Lost</td><td>Lost</td><td>Khona</td></tr>
+                        <tr><td>Mean</td><td>Meant</td><td>Meant</td><td>Matlab Hona</td></tr>
+                        <tr><td>Put</td><td>Put</td><td>Put</td><td>Rakhna</td></tr>
+                        <tr><td>Ride</td><td>Rode</td><td>Ridden</td><td>Sawari Karna</td></tr>
+                        <tr><td>Ring</td><td>Rang</td><td>Rung</td><td>Bajana</td></tr>
+                        <tr><td>Rise</td><td>Rose</td><td>Risen</td><td>Uthna</td></tr>
+                        <tr><td>Shake</td><td>Shook</td><td>Shaken</td><td>Hilana</td></tr>
+                        <tr><td>Shine</td><td>Shone</td><td>Shone</td><td>Chamakna</td></tr>
+                        <tr><td>Shoot</td><td>Shot</td><td>Shot</td><td>Goli Chalana</td></tr>
+                        <tr><td>Show</td><td>Showed</td><td>Shown</td><td>Dikhana</td></tr>
+                        <tr><td>Shut</td><td>Shut</td><td>Shut</td><td>Band Karna</td></tr>
+                        <tr><td>Spend</td><td>Spent</td><td>Spent</td><td>Kharch Karna</td></tr>
+                        <tr><td>Spread</td><td>Spread</td><td>Spread</td><td>Phailana</td></tr>
+                        <tr><td>Steal</td><td>Stole</td><td>Stolen</td><td>Chori Karna</td></tr>
+                        <tr><td>Stick</td><td>Stuck</td><td>Stuck</td><td>Chipkana</td></tr>
+                        <tr><td>Strike</td><td>Struck</td><td>Struck</td><td>Maarna</td></tr>
+                        <tr><td>Swear</td><td>Swore</td><td>Sworn</td><td>Qasam Khana</td></tr>
+                        <tr><td>Swim</td><td>Swam</td><td>Swum</td><td>Tairna</td></tr>
+                        <tr><td>Swing</td><td>Swung</td><td>Swung</td><td>Jhoolna</td></tr>
+                        <tr><td>Teach</td><td>Taught</td><td>Taught</td><td>Parhana</td></tr>
+                        <tr><td>Tear</td><td>Tore</td><td>Torn</td><td>Phaarna</td></tr>
+                        <tr><td>Throw</td><td>Threw</td><td>Thrown</td><td>Phenkna</td></tr>
+                        <tr><td>Wake</td><td>Woke</td><td>Woken</td><td>Jaagna</td></tr>
+                        <tr><td>Bend</td><td>Bent</td><td>Bent</td><td>Jhukana</td></tr>
+                        <tr><td>Bet</td><td>Bet</td><td>Bet</td><td>Shaart Lagana</td></tr>
+                        <tr><td>Bite</td><td>Bit</td><td>Bitten</td><td>Kaatna</td></tr>
+                        <tr><td>Bleed</td><td>Bled</td><td>Bled</td><td>Khoon Behna</td></tr>
+                        <tr><td>Blow</td><td>Blew</td><td>Blown</td><td>Phoonkna</td></tr>
+                        <tr><td>Burn</td><td>Burnt</td><td>Burnt</td><td>Jalana</td></tr>
+                        <tr><td>Burst</td><td>Burst</td><td>Burst</td><td>Phatna</td></tr>
+                        <tr><td>Climb</td><td>Climbed</td><td>Climbed</td><td>Charhna</td></tr>
+                        <tr><td>Dig</td><td>Dug</td><td>Dug</td><td>Khodna</td></tr>
+                        <tr><td>Dive</td><td>Dove</td><td>Dived</td><td>Ghota Lagana</td></tr>
+                        <tr><td>Forbid</td><td>Forbade</td><td>Forbidden</td><td>Mana Karna</td></tr>
+                        <tr><td>Forgive</td><td>Forgave</td><td>Forgiven</td><td>Maaf Karna</td></tr>
+                        <tr><td>Grind</td><td>Ground</td><td>Ground</td><td>Peesna</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- GRAMMAR TREE -->
+        <section class="section" id="tree">
+            <div class="section-header">
+                <h2 data-urdu="گرامر ٹری">Grammar Tree</h2>
+                <p data-urdu="انگریزی زمانوں کی مکمل ساخت ایک نظر میں۔">Complete structure of English Tenses at a glance.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="card" style="overflow-x: auto; padding: 40px 20px;">
+                <div class="grammar-tree">
+                    <div class="tree-root">English Tenses</div>
+                    <div class="tree-branches">
+                        <div class="tree-branch">
+                            <div class="tree-node present">Present</div>
+                            <div class="tree-leaves">
+                                <span>Simple</span>
+                                <span>Continuous</span>
+                                <span>Perfect</span>
+                                <span>Perfect Continuous</span>
+                            </div>
+                        </div>
+                        <div class="tree-branch">
+                            <div class="tree-node past">Past</div>
+                            <div class="tree-leaves">
+                                <span>Simple</span>
+                                <span>Continuous</span>
+                                <span>Perfect</span>
+                                <span>Perfect Continuous</span>
+                            </div>
+                        </div>
+                        <div class="tree-branch">
+                            <div class="tree-node future">Future</div>
+                            <div class="tree-leaves">
+                                <span>Simple</span>
+                                <span>Continuous</span>
+                                <span>Perfect</span>
+                                <span>Perfect Continuous</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMON ERRORS GALLERY -->
+        <section class="section" id="errors">
+            <div class="section-header">
+                <h2 data-urdu="عام غلطیاں">Common Errors</h2>
+                <p data-urdu="پاکستانی انگلش میں کی جانے والی 50 عام غلطیاں۔">Avoid these frequent grammar mistakes.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="grid">
+                <div class="card" id="error-1" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"I am study English."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"I am <strong>studying</strong> English."</p><button class="fav-btn" onclick="markMistake('error-1')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-2" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"He don't know."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"He <strong>doesn't</strong> know."</p><button class="fav-btn" onclick="markMistake('error-2')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-3" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"I am agree."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"I <strong>agree</strong>."</p><button class="fav-btn" onclick="markMistake('error-3')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-4" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"Since 2 hours."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"<strong>For</strong> 2 hours."</p><button class="fav-btn" onclick="markMistake('error-4')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-5" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"He is more taller."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"He is <strong>taller</strong>."</p><button class="fav-btn" onclick="markMistake('error-5')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-6" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"I did not went."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"I did not <strong>go</strong>."</p><button class="fav-btn" onclick="markMistake('error-6')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-7" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"She can able to."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"She <strong>can</strong> do it." / "She is <strong>able to</strong>."</p><button class="fav-btn" onclick="markMistake('error-7')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-8" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"I have a news."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"I have <strong>some news</strong>."</p><button class="fav-btn" onclick="markMistake('error-8')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-9" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"He gave me advices."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"He gave me <strong>advice</strong>."</p><button class="fav-btn" onclick="markMistake('error-9')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-10" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"Where you are going?"</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"Where <strong>are you</strong> going?"</p><button class="fav-btn" onclick="markMistake('error-10')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-11" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"He told to me."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"He <strong>told me</strong>."</p><button class="fav-btn" onclick="markMistake('error-11')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-12" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"He has went."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"He has <strong>gone</strong>."</p><button class="fav-btn" onclick="markMistake('error-12')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-13" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"One of my friend."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"One of my <strong>friends</strong>."</p><button class="fav-btn" onclick="markMistake('error-13')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-14" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"I didn't knew."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"I didn't <strong>know</strong>."</p><button class="fav-btn" onclick="markMistake('error-14')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+                <div class="card" id="error-15" style="border-left: 4px solid #ef4444;"><h4 style="color: #ef4444;">❌ Wrong</h4><p>"Myself Asad."</p><h4 style="color: #10b981; margin-top:10px;">✅ Correct</h4><p>"<strong>I am</strong> Asad." / "<strong>My name is</strong> Asad."</p><button class="fav-btn" onclick="markMistake('error-15')" style="margin-top:8px;font-size:0.8rem;color:var(--text-light)"><i class="fas fa-thumbtack"></i> Mark</button></div>
+            </div>
+        </section>
+
+        <!-- SENTENCE SCRAMBLE -->
+        <section class="section" id="scramble">
+            <div class="section-header">
+                <h2 data-urdu="جملہ سازی">Sentence Scramble</h2>
+                <p data-urdu="لفظوں کو صحیح ترتیب دے کر جملہ بنائیں۔">Arrange the words in the correct order.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="margin-bottom: 15px;">
+                    <span id="scrambleCounter" style="background: var(--primary); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">1 / 10</span>
+                </div>
+                <p id="scrambleHint" style="margin-bottom: 10px; color: var(--text-light); font-style: italic;">Hint: Present Simple</p>
+                <div id="scramblePool" class="scramble-box">
+                    <!-- Shuffled words here -->
+                </div>
+                <i class="fas fa-arrow-down" style="margin: 10px; color: var(--border);"></i>
+                <div id="scrambleTarget" class="scramble-box" style="border-style: solid; border-color: var(--primary);">
+                    <!-- User's arrangement here -->
+                </div>
+                <div id="scrambleFeedback" style="margin-top: 15px; min-height: 24px; font-weight: 600;"></div>
+                <div style="margin-top: 20px;">
+                    <button class="nav-link" onclick="checkScramble()">Check Answer</button>
+                    <button class="control-btn" onclick="resetScramble()" style="display:inline-flex; border-radius: 8px; width: auto; padding: 0 15px; margin-left: 10px;"><i class="fas fa-undo" style="margin-right: 5px;"></i> Reset</button>
+                    <button class="control-btn" onclick="nextScramble()" style="display:inline-flex; border-radius: 8px; width: auto; padding: 0 15px; margin-left: 10px;">Next <i class="fas fa-forward" style="margin-left: 5px;"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHEAT SHEET -->
+        <section class="section" id="cheatsheet">
+            <div class="section-header">
+                <h2>Quick Cheat Sheet</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Time</th><th>Aspect</th><th>Formula</th></tr></thead>
+                    <tbody>
+                        <tr><td>Present</td><td>Simple</td><td>V1 / V1+s/es</td></tr>
+                        <tr><td>Present</td><td>Continuous</td><td>is/am/are + V+ing</td></tr>
+                        <tr><td>Present</td><td>Perfect</td><td>have/has + V3</td></tr>
+                        <tr><td>Present</td><td>Perfect Continuous</td><td>have/has been + V+ing</td></tr>
+                        <tr><td>Past</td><td>Simple</td><td>V2</td></tr>
+                        <tr><td>Past</td><td>Continuous</td><td>was/were + V+ing</td></tr>
+                        <tr><td>Past</td><td>Perfect</td><td>had + V3</td></tr>
+                        <tr><td>Past</td><td>Perfect Continuous</td><td>had been + V+ing</td></tr>
+                        <tr><td>Future</td><td>Simple</td><td>will + V1</td></tr>
+                        <tr><td>Future</td><td>Continuous</td><td>will be + V+ing</td></tr>
+                        <tr><td>Future</td><td>Perfect</td><td>will have + V3</td></tr>
+                        <tr><td>Future</td><td>Perfect Continuous</td><td>will have been + V+ing</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section" id="voice-speech">
+            <div class="section-header">
+                <h2 data-urdu="فعل معروف و مجہول">Active vs Passive</h2>
+                <p data-urdu="جب کام کرنے والے کی جگہ کام ہونے والی چیز پر توجہ ہو۔">Focusing on the action rather than the doer.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Tense</th><th>Active</th><th>Passive</th></tr></thead>
+                    <tbody>
+                        <tr><td>Present Simple</td><td>He writes a letter.</td><td>A letter <strong>is written</strong> by him.</td></tr>
+                        <tr><td>Present Continuous</td><td>He is writing a letter.</td><td>A letter <strong>is being written</strong> by him.</td></tr>
+                        <tr><td>Present Perfect</td><td>He has written a letter.</td><td>A letter <strong>has been written</strong> by him.</td></tr>
+                        <tr><td>Past Simple</td><td>He wrote a letter.</td><td>A letter <strong>was written</strong> by him.</td></tr>
+                        <tr><td>Past Continuous</td><td>He was writing a letter.</td><td>A letter <strong>was being written</strong> by him.</td></tr>
+                        <tr><td>Future Simple</td><td>He will write a letter.</td><td>A letter <strong>will be written</strong> by him.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card" style="margin-top: 15px; background: rgba(16, 185, 129, 0.05); border-left: 4px solid #10b981;">
+                <p class="formula">Passive Formula: Object + be (tense) + V3 + by + Subject</p>
+            </div>
+        </section>
+
+        <!-- DIRECT & INDIRECT -->
+        <section class="section" id="narration">
+            <div class="section-header">
+                <h2 data-urdu="براہ راست اور بالواسطہ گفتگو">Direct & Indirect</h2>
+                <p data-urdu="کسی کی کہی ہوئی بات کو بیان کرنے کے طریقے">Reporting what someone said.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Direct</th><th>Indirect</th><th>Rule</th></tr></thead>
+                    <tbody>
+                        <tr><td>"I am tired"</td><td>he was tired</td><td>Present → Past</td></tr>
+                        <tr><td>"I eat"</td><td>he ate</td><td>V1 → V2</td></tr>
+                        <tr><td>"I have eaten"</td><td>he had eaten</td><td>Present Perfect → Past Perfect</td></tr>
+                        <tr><td>"I can swim"</td><td>he could swim</td><td>Can → Could</td></tr>
+                        <tr><td>"Today"</td><td>That day</td><td>Time words change</td></tr>
+                        <tr><td>"Now"</td><td>Then</td><td>Time words change</td></tr>
+                        <tr><td>"Tomorrow"</td><td>The next day</td><td>Time words change</td></tr>
+                        <tr><td>"Yesterday"</td><td>The previous day</td><td>Time words change</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- DATA MANAGEMENT -->
+        <section class="section" id="settings">
+            <div class="section-header">
+                <h2 data-urdu="ترتیبات و ڈیٹا">Settings & Data</h2>
+                <p data-urdu="اپنا ڈیٹا محفوظ کریں یا واپس لائیں۔">Export your progress or import it back.</p>
+                <div class="divider"></div>
+            </div>
+            <div class="card" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <button class="nav-link" onclick="exportData()" style="width: auto;"><i class="fas fa-download"></i> Export Progress</button>
+                <button class="nav-link" onclick="document.getElementById('importFile').click()" style="width: auto; background: var(--secondary);"><i class="fas fa-upload"></i> Import Progress</button>
+                <input type="file" id="importFile" style="display: none;" onchange="importData(event)">
+            </div>
+        </section>
+
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div id="emptyState" class="empty-state hidden">
+        <i class="fas fa-search"></i>
+        <h3>Kuch nahi mila!</h3>
+        <p>Try searching for "noun", "past simple", or "verb".</p>
+    </div>
+
+    <button class="back-to-top" id="backToTop" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer>
+        <p>Made with ❤️ for Roman Urdu learners | English Grammar Master</p>
+        <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.6;">Save this page and use it offline anytime.</p>
+    </footer>
+
+    <div class="modal" id="badgeModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 data-urdu="آپ کے میڈلز">Your Badges</h2>
+            <p>Aap ki mehnat ka phal!</p>
+            <div class="badge-grid" id="badgeGrid">
+                <div class="badge-item" id="badge-perfect">
+                    <div style="font-size: 2rem;">🏆</div>
+                    <strong>Perfect Score</strong>
+                    <p style="font-size: 0.7rem;">Quiz mein 100% marks</p>
+                </div>
+                <div class="badge-item" id="badge-streak">
+                    <div style="font-size: 2rem;">🔥</div>
+                    <strong>Streak Master</strong>
+                    <p style="font-size: 0.7rem;">3 din lagatar parhai</p>
+                </div>
+                <div class="badge-item" id="badge-scholar">
+                    <div style="font-size: 2rem;">🎓</div>
+                    <strong>Grammar Scholar</strong>
+                    <p style="font-size: 0.7rem;">1000 XP hasil kiye</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

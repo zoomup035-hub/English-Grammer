@@ -1,0 +1,95 @@
+{
+  "name": "English Grammar Master",
+  "short_name": "EGM",
+  "description": "Complete English Grammar Guide in Roman Urdu — 12 Tenses, Parts of Speech, Practice & More",
+  "id": "/english-grammar-master/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
+  "orientation": "portrait",
+  "background_color": "#1e40af",
+  "theme_color": "#6366f1",
+  "categories": [
+    "education",
+    "reference",
+    "books"
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Quick Quiz",
+      "short_name": "Quiz",
+      "description": "Start a quick grammar quiz",
+      "url": "./index.html#practice"
+    },
+    {
+      "name": "Flashcards",
+      "short_name": "Cards",
+      "description": "Practice with flashcards",
+      "url": "./index.html#practice"
+    },
+    {
+      "name": "12 Tenses",
+      "short_name": "Tenses",
+      "description": "Learn all 12 English tenses",
+      "url": "./index.html#tenses"
+    },
+    {
+      "name": "Common Errors",
+      "short_name": "Errors",
+      "description": "Learn from common mistakes",
+      "url": "./index.html#common-errors"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "share_target": {
+    "action": "./index.html",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+egm",
+      "url": "./index.html?topic=%s"
+    }
+  ]
+}
