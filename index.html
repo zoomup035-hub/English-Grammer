@@ -5,13 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Grammar Master — Roman Urdu Guide</title>
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob:; connect-src 'self'; base-uri 'self'; form-action 'self';">
+    
     <!-- iOS Support -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Grammar Master">
     <link rel="apple-touch-icon" href="icons/icon.svg">
+    
     <!-- PWA -->
     <link rel="manifest" href="manifest.json">
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap"
         rel="stylesheet">
@@ -62,15 +73,15 @@
         </div>
     </div>
 
-    <header style="margin-top: var(--header-height);">
-        <div class="stats-bar animate">
-            <div class="stat-item" title="User Level">
+    <header style="margin-top: var(--header-height);" role="banner">
+        <div class="stats-bar animate" role="status" aria-label="User Statistics">
+            <div class="stat-item" title="User Level" role="group" aria-label="User Level">
                 <i class="fas fa-medal" style="color: #8b5cf6;" aria-hidden="true"></i> <span id="userLevel">Beginner</span>
             </div>
-            <div class="stat-item" title="Daily Streak">
+            <div class="stat-item" title="Daily Streak" role="group" aria-label="Daily Streak">
                 <i class="fas fa-fire" style="color: #f97316;" aria-hidden="true"></i> <span id="streakCount">0</span>
             </div>
-            <div class="stat-item" title="Your XP / Points">
+            <div class="stat-item" title="Your XP / Points" role="group" aria-label="Experience Points">
                 <i class="fas fa-star" style="color: #f59e0b;" aria-hidden="true"></i> <span id="xpCount">0</span> XP
             </div>
             <div class="stat-item" title="Badges Earned" style="cursor:pointer;" onclick="openModal('badgeModal')">
@@ -1100,6 +1111,22 @@
         </div>
     </div>
 
+    <!-- Modular JavaScript Files -->
+    <script src="js/modules/storage.js"></script>
+    <script src="js/modules/security.js"></script>
+    <script src="js/modules/theme.js"></script>
+    <script src="js/modules/gamification.js"></script>
+    <script src="js/modules/quiz.js"></script>
+    <script src="js/modules/flashcards.js"></script>
+    <script src="js/modules/ui.js"></script>
+    <script src="js/modules/performance.js"></script>
+    <script src="js/modules/advanced.js"></script>
+    <script src="js/modules/ux-enhancements.js"></script>
+    
+    <!-- Main Application (loads after modules) -->
+    <script src="js/app.js"></script>
+    
+    <!-- Legacy script for backward compatibility (will be phased out) -->
     <script src="script.js"></script>
 
 </body>

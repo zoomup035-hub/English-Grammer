@@ -1,13 +1,14 @@
 // ============================================
 // ENGLISH GRAMMAR MASTER — Service Worker
-// Version: 4.0.0 | Last Updated: 2026-05-11
+// Version: 5.1.0 | Fixed offline functionality
 // ============================================
 
-const CACHE_VERSION = 'egm-v4';
+const CACHE_VERSION = 'egm-v5.1';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 const IMAGE_CACHE = `${CACHE_VERSION}-images`;
 const FONT_CACHE = `${CACHE_VERSION}-fonts`;
+const JS_MODULE_CACHE = `${CACHE_VERSION}-modules`;
 
 // Core App Shell — MUST be available offline
 const APP_SHELL = [
@@ -17,7 +18,21 @@ const APP_SHELL = [
   './script.js',
   './manifest.json',
   './offline.html',
-  './icon.svg'
+  './icons/icon.svg',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  // New modular files
+  './js/app.js',
+  './js/modules/storage.js',
+  './js/modules/security.js',
+  './js/modules/theme.js',
+  './js/modules/gamification.js',
+  './js/modules/quiz.js',
+  './js/modules/flashcards.js',
+  './js/modules/ui.js',
+  './js/modules/performance.js',
+  './js/modules/advanced.js',
+  './js/modules/ux-enhancements.js'
 ];
 
 // External resources that should be cached
@@ -111,6 +126,8 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(handleImage(request));
   } else if (isFontRequest(request, url)) {
     event.respondWith(handleFont(request));
+  } else if (isJSModule(request, url)) {
+    event.respondWith(handleJSModule(request));
   } else if (isStaticAsset(request, url)) {
     event.respondWith(handleStaticAsset(request));
   } else {
@@ -123,11 +140,9 @@ self.addEventListener('fetch', (event) => {
 // ============================================
 async function handleNavigation(request) {
   try {
-    // Try network first
     const networkResponse = await fetch(request);
 
     if (networkResponse.ok) {
-      // Cache successful response
       const cache = await caches.open(STATIC_CACHE);
       cache.put(request, networkResponse.clone());
       return networkResponse;
@@ -137,15 +152,22 @@ async function handleNavigation(request) {
   } catch (error) {
     console.log('[SW] Navigation failed, trying cache...');
 
-    // Fallback to cache
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
       return cachedResponse;
     }
 
-    // Final fallback: offline page
     console.log('[SW] Serving offline page');
-    return caches.match('./offline.html');
+    const offlinePage = await caches.match('./offline.html');
+    if (offlinePage) {
+      return offlinePage;
+    }
+    
+    // Final fallback
+    return new Response('Offline - Please check your connection', {
+      status: 503,
+      headers: { 'Content-Type': 'text/plain' }
+    });
   }
 }
 
@@ -258,6 +280,42 @@ async function handleDynamic(request) {
 }
 
 // ============================================
+// STRATEGY: JavaScript Modules (Cache First)
+// ============================================
+async function handleJSModule(request) {
+  const cachedResponse = await caches.match(request);
+  
+  if (cachedResponse) {
+    // Return cached immediately, update in background
+    fetch(request).then(networkResponse => {
+      if (networkResponse.ok) {
+        caches.open(JS_MODULE_CACHE).then(cache => {
+          cache.put(request, networkResponse);
+        });
+      }
+    }).catch(() => {});
+    
+    return cachedResponse;
+  }
+
+  try {
+    const networkResponse = await fetch(request);
+    if (networkResponse.ok) {
+      const cache = await caches.open(JS_MODULE_CACHE);
+      cache.put(request, networkResponse.clone());
+      return networkResponse;
+    }
+  } catch (error) {
+    console.log('[SW] JS module fetch failed');
+  }
+
+  return new Response('Module not available', {
+    status: 503,
+    headers: { 'Content-Type': 'application/javascript' }
+  });
+}
+
+// ============================================
 // CACHE CLEANUP — Remove oldest entries
 // ============================================
 async function cleanCache(cacheName, maxItems) {
@@ -305,6 +363,11 @@ function isStaticAsset(request, url) {
   const isLocal = url.origin === self.location.origin;
 
   return isLocal && staticExtensions.some(ext => url.pathname.toLowerCase().endsWith(ext));
+}
+
+function isJSModule(request, url) {
+  return url.pathname.endsWith('.js') || 
+         url.pathname.includes('/js/modules/');
 }
 
 // ============================================

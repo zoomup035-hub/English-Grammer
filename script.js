@@ -1477,15 +1477,22 @@ function initPWA() {
     });
 
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').then(reg => {
-            if ('sync' in reg) {
-                reg.sync.register('sync-progress').catch(() => {});
-            }
-        });
+        // Only register SW on HTTP/HTTPS protocols
+        if (window.location.protocol === 'file:') {
+            console.warn('[Legacy] Service Worker requires HTTP/HTTPS. Use a local server.');
+        } else {
+            navigator.serviceWorker.register('sw.js').then(reg => {
+                if ('sync' in reg) {
+                    reg.sync.register('sync-progress').catch(() => {});
+                }
+            }).catch(err => {
+                console.error('[Legacy] SW registration failed:', err);
+            });
 
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-            showToast("Naya update aa gaya! Refresh karein. 🔄", "info");
-        });
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                showToast("Naya update aa gaya! Refresh karein. 🔄", "info");
+            });
+        }
     }
 }
 
